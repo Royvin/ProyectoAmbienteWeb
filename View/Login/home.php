@@ -6,6 +6,7 @@
     <title>Auto Repuestos Grillo - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../Styles/login.css" rel="stylesheet">
+    
 </head>
 <body>
     <!-- Navbar -->
@@ -32,23 +33,47 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown" href="#">
+                        Administración
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Administrar Productos</a></li>
+                            <li><a class="dropdown-item" href="#">Administrar Proveedores</a></li>
+                            <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <button id="logoutBtn" class="btn btn-outline-light">Cerrar Sesión</button>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content container mt-5">
+    <div class="content container mt-2">
         <div class="row">
             <div class="col-md-8">
-                <div class="card card-custom mb-4 gradient-custom-2">
-                    <div class="card-body text-white">
+                <div class="card card-custom mb-4 hero-card-alternative">
+                    <div class="card-body">
                         <h1 class="card-title">Bienvenido a Repuestos Grillo</h1>
                         <p class="card-text lead">Tu destino definitivo para repuestos automotrices de calidad.</p>
                     </div>
                 </div>
-                
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom">
+                <div class="card-header gradient-custom-2 text-white">
+                    Novedades
+                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Nuevos repuestos Ford</li>
+                        <li class="list-group-item">Promoción de aceites</li>
+                        <li class="list-group-item">Servicio técnico especializado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> 
+            
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 card-custom">
@@ -80,20 +105,6 @@
                 </div>
             </div>
             
-            <div class="col-md-4">
-                <div class="card card-custom">
-                    <div class="card-header gradient-custom-2 text-white">
-                        Novedades
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nuevos repuestos Ford</li>
-                        <li class="list-group-item">Promoción de aceites</li>
-                        <li class="list-group-item">Servicio técnico especializado</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer gradient-custom-2 text-white text-center text-lg-start mt-auto">

@@ -216,3 +216,113 @@ body {
 .card-custom {
     animation: fadeIn 0.5s ease-out;
 }
+
+/* Mantener todos los estilos anteriores y agregar/modificar: */
+
+/* Estilos para el dropdown en hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos del Dropdown */
+.dropdown-menu {
+    background-color: var(--text-light);
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.dropdown-item {
+    color: var(--text-dark) !important;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.3rem;
+    transition: var(--transition);
+}
+
+.dropdown-item:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light) !important;
+}
+
+/* Ajuste para el ícono del dropdown */
+.dropdown-toggle::after {
+    border-top-color: var(--text-light);
+    transition: var(--transition);
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Ajuste responsive */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        background-color: rgba(255,255,255,0.1);
+        border: none;
+        box-shadow: none;
+    }
+    
+    .dropdown-item {
+        color: var(--text-light) !important;
+    }
+    
+    .dropdown-item:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+}
+
+/* Hero card con la imagen de fondo */
+.hero-card-alternative {
+    position: relative;
+    background: url('../imgs/repuestos-home.jpg') no-repeat center center;
+    background-size: cover;
+    height: 300px; /* Ajusta la altura según sea necesario */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.hero-card-alternative {
+    position: relative;
+    background: url('../imgs/repuestos-home.jpg') no-repeat center center;
+    background-size: cover;
+    height: 250px; /* Ajusta la altura según lo que necesites */
+    width:  800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px; /* Bordes redondeados opcionales */
+    overflow: hidden;
+}
+
+.hero-card-alternative .card-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar la visibilidad */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
