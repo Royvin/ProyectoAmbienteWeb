@@ -1,5 +1,6 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ProductosModel.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ProductosController.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -124,30 +125,34 @@
                         </thead>
                         <tbody>
                             <?php
-                                $productos = ConsultarProductos();
-                                if ($productos && $productos->num_rows > 0) {
-                                    while ($row = $productos->fetch_assoc()) {
-                                        echo "<tr>";
-                                        echo "<td>" . $row['IdProductos'] . "</td>";
-                                        echo "<td>" . $row['Nombre'] . "</td>";
-                                        echo "<td>" . $row['IdCategoria'] . "</td>";
-                                        echo "<td>" . $row['IdProveedor'] . "</td>";
-                                        echo "<td>$" . number_format($row['Precio'], 2) . "</td>";
-                                        echo "<td>" . $row['CantidadDisponible'] . "</td>";
-                                        echo "<td>
-                                                <button class='action-btn edit-btn' data-bs-toggle='modal' data-bs-target='#editProductModal'>
-                                                    <i class='fas fa-edit'></i>
-                                                </button>
-                                                <button class='action-btn delete-btn' data-bs-toggle='modal' data-bs-target='#deleteProductModal'>
-                                                    <i class='fas fa-trash'></i>
-                                                </button>
-                                            </td>";
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "<tr><td colspan='7' class='text-center'>No hay Productos registrados</td></tr>";
-                                }
-                            ?>
+        $productos = ConsultarProductos();
+        if ($productos && $productos->num_rows > 0) {
+            while ($row = $productos->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row['IdProductos'] . "</td>";
+                echo "<td>" . $row['Nombre'] . "</td>";
+                echo "<td>" . $row['IdCategoria'] . "</td>";
+                echo "<td>" . $row['IdProveedor'] . "</td>";
+                echo "<td>$" . number_format($row['Precio'], 2) . "</td>";
+                echo "<td>" . $row['CantidadDisponible'] . "</td>";
+                echo "<td>
+                        <button class='action-btn edit-btn' data-bs-toggle='modal' data-bs-target='#editProductModal'>
+                            <i class='fas fa-edit'></i>
+                        </button>
+
+                        <form action='' method='POST' style='display:inline;'>
+                            <input type='hidden' name='idProducto' value='" . $row['IdProductos'] . "'>
+                            <button type='submit' class='action-btn delete-btn' name='btnEliminar' onclick='return confirm(\"¿Estás seguro de que quieres eliminar este producto?\");'>
+                                <i class='fas fa-trash'></i>
+                            </button>
+                        </form>
+                      </td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='7' class='text-center'>No hay Productos registrados</td></tr>";
+        }
+    ?>
                         </tbody>
                     </table>
                 </div>

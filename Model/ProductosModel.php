@@ -32,4 +32,20 @@ function ConsultarProductos()
         return null;
     }
 }
+
+function EliminarProducto($idProducto)
+{
+    try {
+        $context = AbrirBaseDatos();
+        $sentencia = "CALL SP_EliminarProducto($idProducto)";
+        $resultado = $context->query($sentencia);
+
+        CerrarBaseDatos($context);
+
+        return $resultado;
+
+    } catch (Exception $error) {
+        return null;
+    }
+}
 ?>

@@ -21,4 +21,16 @@ if(isset($_POST["btnCrear"]))
     }
 }
 
+if(isset($_POST["btnEliminar"])) { 
+    $idProducto = $_POST["idProducto"];
+
+    $resultado = EliminarProducto($idProducto);
+
+    if($resultado == true) {
+        header('location: AdministrarProductos.php');
+        exit();
+    } else {
+        $_POST["Message"] = "Su información no fue eliminada correctamente";
+    }
+}
 ?>
