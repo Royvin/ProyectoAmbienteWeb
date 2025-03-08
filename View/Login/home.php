@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Auto Repuestos Grillo - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../Styles/login.css" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
@@ -35,10 +37,10 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#">
-                        Administración
+                            Administración
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Administrar Productos</a></li>
+                            <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">Administrar Productos</a></li>
                             <li><a class="dropdown-item" href="#">Administrar Proveedores</a></li>
                             <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
                         </ul>
@@ -61,9 +63,9 @@
             </div>
             <div class="col-md-4">
                 <div class="card card-custom">
-                <div class="card-header gradient-custom-2 text-white">
-                    Novedades
-                </div>
+                    <div class="card-header gradient-custom-2 text-white">
+                        Novedades
+                    </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Nuevos repuestos Ford</li>
                         <li class="list-group-item">Promoción de aceites</li>
@@ -72,39 +74,39 @@
                 </div>
             </div>
         </div>
-    </div> 
-            
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-4 card-custom">
-                            <div class="card-body">
-                                <h5 class="card-title">Catálogo</h5>
-                                <p class="card-text">Explora nuestra amplia gama de repuestos.</p>
-                                <a href="#" class="btn btn-custom">Ver Catálogo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 card-custom">
-                            <div class="card-body">
-                                <h5 class="card-title">Servicios</h5>
-                                <p class="card-text">Asesoramiento técnico y soluciones integrales.</p>
-                                <a href="#" class="btn btn-custom">Conocer Más</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 card-custom">
-                            <div class="card-body">
-                                <h5 class="card-title">Contacto</h5>
-                                <p class="card-text">Estamos listos para ayudarte.</p>
-                                <a href="#" class="btn btn-custom">Contactar</a>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 card-custom">
+                <div class="card-body">
+                    <h5 class="card-title">Catálogo</h5>
+                    <p class="card-text">Explora nuestra amplia gama de repuestos.</p>
+                    <a href="#" class="btn btn-custom">Ver Catálogo</a>
                 </div>
             </div>
-            
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 card-custom">
+                <div class="card-body">
+                    <h5 class="card-title">Servicios</h5>
+                    <p class="card-text">Asesoramiento técnico y soluciones integrales.</p>
+                    <a href="#" class="btn btn-custom">Conocer Más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 card-custom">
+                <div class="card-body">
+                    <h5 class="card-title">Contacto</h5>
+                    <p class="card-text">Estamos listos para ayudarte.</p>
+                    <a href="#" class="btn btn-custom">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <!-- Footer -->
     <footer class="footer gradient-custom-2 text-white text-center text-lg-start mt-auto">
@@ -125,4 +127,5 @@
     <script src="../Scripts/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

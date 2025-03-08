@@ -1,0 +1,132 @@
+
+.admin-header {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.table-custom {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.table-custom thead {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.table-custom th {
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.table-custom td {
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+.table-custom tr:hover {
+    background-color: var(--gray-light);
+}
+
+.action-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    transition: var(--transition);
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: white;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para los formularios */
+.form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    margin-bottom: 1rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(227, 24, 55, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para modales */
+.modal-content {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.btn-outline-custom {
+    background: transparent;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    transition: var(--transition);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline-custom:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* Estilos para el botón de cierre en el modal */
+.btn-close-white {
+    filter: brightness(0) invert(1);
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .action-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .admin-header {
+        padding: 1rem;
+    }
+}
