@@ -48,4 +48,37 @@ function EliminarProducto($idProducto)
         return null;
     }
 }
+
+function EditarProducto($idProducto, $nombre, $precio, $cantidadDisponible, $idCategoria, $idProveedor) {
+    try {
+        $context = AbrirBaseDatos();
+        $sentencia = "CALL SP_EditarProductos($idProducto, '$nombre', $precio, $cantidadDisponible, $idCategoria, $idProveedor)";
+        $resultado = $context->query($sentencia);
+        
+        CerrarBaseDatos($context);
+        
+        return $resultado;
+    } catch (Exception $error) {
+        return $error->getMessage();
+    }
+}
+
+function ConsultarProductoPorId($idProducto) {
+    try {
+        $context = AbrirBaseDatos();
+        $sentencia = "CALL SP_ConsultarProductoPorId($idProducto)";
+        $resultado = $context->query($sentencia);
+        
+        if ($resultado && $resultado->num_rows > 0) {
+            $producto = $resultado->fetch_assoc();
+            CerrarBaseDatos($context);
+            return $producto;
+        } else {
+            CerrarBaseDatos($context);
+            return null;
+        }
+    } catch (Exception $error) {
+        return null;
+    }
+}
 ?>

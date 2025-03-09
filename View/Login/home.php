@@ -27,7 +27,7 @@
                         <a class="nav-link active" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Catálogo</a>
+                        <a class="nav-link" href="../Productos/Catalogo.php">Catálogo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Servicios</a>

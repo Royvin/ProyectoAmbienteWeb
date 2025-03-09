@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Repuestos Grillo - Administrar Productos</title>
+    <title>Repuestos Grillo - Catalogo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="../Styles/login.css" rel="stylesheet">
@@ -16,7 +16,6 @@
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -62,13 +61,8 @@
         <div class="admin-header">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <h1 class="mb-0">Administrar Productos</h1>
-                    <p class="mb-0">Gestiona el inventario de repuestos automotrices</p>
-                </div>
-                <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                    <button type="button" class="btn btn-custom" onclick="window.location.href='CrearProducto.php';">
-                        <i class="fas fa-plus me-2"></i>Nuevo Producto
-                    </button>
+                    <h1 class="mb-0">Catalogo De Productos</h1>
+                    <p class="mb-0">Los mejores Productos del Mercado</p>
                 </div>
             </div>
         </div>
@@ -77,14 +71,6 @@
         <div class="card card-custom mb-4">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar productos...">
-                            <button class="btn btn-custom" type="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
                     <div class="col-md-3">
                         <select class="form-select">
                             <option selected>Todas las categorías</option>
@@ -125,38 +111,27 @@
                         </thead>
                         <tbody>
                             <?php
-        $productos = ConsultarProductos();
-        if ($productos && $productos->num_rows > 0) {
-            while ($row = $productos->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row['IdProductos'] . "</td>";
-                echo "<td>" . $row['Nombre'] . "</td>";
-                echo "<td>" . $row['IdCategoria'] . "</td>";
-                echo "<td>" . $row['IdProveedor'] . "</td>";
-                echo "<td>$" . number_format($row['Precio'], 2) . "</td>";
-                echo "<td>" . $row['CantidadDisponible'] . "</td>";
-                echo "<td>
-                        <form action='EditarProducto.php' method='GET' style='display:inline;'>
-                            <input type='hidden' name='idProducto' value='" . $row['IdProductos'] . "'>
-                            <button type='submit' class='action-btn edit-btn'>
-                                <i class='fas fa-edit'></i>
-                            </button>
-                        </form>
-
-
-                        <form action='' method='POST' style='display:inline;'>
-                            <input type='hidden' name='idProducto' value='" . $row['IdProductos'] . "'>
-                            <button type='submit' class='action-btn delete-btn' name='btnEliminar' onclick='return confirm(\"¿Estás seguro de que quieres eliminar este producto?\");'>
-                                <i class='fas fa-trash'></i>
-                            </button>
-                        </form>
-                      </td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='7' class='text-center'>No hay Productos registrados</td></tr>";
-        }
-    ?>
+                                $productos = ConsultarProductos();
+                                if ($productos && $productos->num_rows > 0) {
+                                    while ($row = $productos->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['IdProductos'] . "</td>";
+                                        echo "<td>" . $row['Nombre'] . "</td>";
+                                        echo "<td>" . $row['IdCategoria'] . "</td>";
+                                        echo "<td>" . $row['IdProveedor'] . "</td>";
+                                        echo "<td>$" . number_format($row['Precio'], 2) . "</td>";
+                                        echo "<td>" . $row['CantidadDisponible'] . "</td>";
+                                        echo "<td>
+                                                <button class='action-btn cart-btn' data-bs-toggle='modal' data-bs-target='#cartModal' style='background-color: green; color: white;'>
+                                                    <i class='fas fa-shopping-cart'></i>
+                                                </button>
+                                            </td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='7' class='text-center'>No hay Productos registrados</td></tr>";
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
