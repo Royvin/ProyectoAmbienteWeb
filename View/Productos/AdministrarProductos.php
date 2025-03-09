@@ -16,10 +16,9 @@
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../Login/home.php">
                 <img src="../imgs/logo.png" alt="Logo" width="50" height="50" class="me-2">
                 Repuestos Grillo
             </a>
@@ -56,9 +55,7 @@
         </div>
     </nav>
 
-    <!-- Contenido principal -->
     <div class="container content">
-        <!-- Encabezado de administración -->
         <div class="admin-header">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -72,8 +69,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Búsqueda y filtros -->
         <div class="card card-custom mb-4">
             <div class="card-body">
                 <div class="row">
@@ -107,7 +102,6 @@
             </div>
         </div>
 
-        <!-- Tabla de productos -->
         <div class="card card-custom">
             <div class="card-body">
                 <div class="table-container">
@@ -164,7 +158,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer gradient-custom-2 text-white text-center text-lg-start mt-auto">
         <div class="container p-4">
             <div class="row">

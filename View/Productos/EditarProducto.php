@@ -1,5 +1,11 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ProductosController.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/CategoriasModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ProveedoresModel.php";
+
+// Fetch categories and providers
+$categorias = ConsultarCategorias();
+$proveedores = ConsultarProveedores();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -15,10 +21,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../Login/home.php">
                 <img src="../imgs/logo.png" alt="Logo" width="50" height="50" class="me-2">
                 Repuestos Grillo
             </a>
@@ -31,7 +36,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
                         <a class="nav-link" href="../Login/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Catálogo</a>
+                        <a class="nav-link" href="Catalogo.php">Catálogo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Servicios</a>
@@ -55,9 +60,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
         </div>
     </nav>
 
-    <!-- Contenido principal -->
     <div class="container content">
-        <!-- Encabezado de administración -->
         <div class="admin-header">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -67,7 +70,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
             </div>
         </div>
 
-        <!-- Formulario de edición de producto -->
         <div class="card card-custom">
             <div class="card-body">
                 <?php if (isset($_POST["Message"])): ?>
@@ -75,7 +77,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
                 <?php endif; ?>
 
                 <form action="" method="POST">
-                    <!-- Campo oculto para el ID del producto -->
                     <input type="hidden" name="idProducto" value="<?php echo $producto['IdProductos']; ?>">
 
                     <div class="row">
@@ -101,17 +102,35 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-4">
-                                <label for="idCategoria" class="form-label">ID Categoría *</label>
-                                <input type="text" class="form-control" id="idCategoria" name="idCategoria"
-                                    value="<?php echo $producto['IdCategoria']; ?>" required>
+                                <label for="idCategoria" class="form-label">Categoría *</label>
+                                <select class="form-select" id="idCategoria" name="idCategoria" required>
+                                    <option value="">Seleccione una categoría</option>
+                                    <?php
+                                    if ($categorias && $categorias->num_rows > 0) {
+                                        while ($categoria = $categorias->fetch_assoc()) {
+                                            $selected = ($categoria["IdCategoria"] == $producto['IdCategoria']) ? 'selected' : '';
+                                            echo '<option value="' . $categoria["IdCategoria"] . '" ' . $selected . '>' . $categoria["Nombre"] . '</option>';
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-4">
-                                <label for="idProveedor" class="form-label">ID Proveedor *</label>
-                                <input type="text" class="form-control" id="idProveedor" name="idProveedor"
-                                    value="<?php echo $producto['IdProveedor']; ?>" required>
+                                <label for="idProveedor" class="form-label">Proveedor *</label>
+                                <select class="form-select" id="idProveedor" name="idProveedor" required>
+                                    <option value="">Seleccione un proveedor</option>
+                                    <?php
+                                    if ($proveedores && $proveedores->num_rows > 0) {
+                                        while ($proveedor = $proveedores->fetch_assoc()) {
+                                            $selected = ($proveedor["IdProveedor"] == $producto['IdProveedor']) ? 'selected' : '';
+                                            echo '<option value="' . $proveedor["IdProveedor"] . '" ' . $selected . '>' . $proveedor["Nombre"] . '</option>';
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -137,7 +156,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer gradient-custom-2 text-white text-center text-lg-start mt-auto">
         <div class="container p-4">
             <div class="row">
@@ -153,32 +171,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/Produc
         </div>
     </footer>
 
-    <!-- Scripts de Bootstrap y jQuery -->
     <script src="../Scripts/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    // Validación del formulario
-    $(document).ready(function() {
-        $('form').on('submit', function(e) {
-            let isValid = true;
-
-            // Validar campos requeridos
-            $(this).find('[required]').each(function() {
-                if ($(this).val() === '' || $(this).val() === null) {
-                    isValid = false;
-                    $(this).addClass('is-invalid');
-                } else {
-                    $(this).removeClass('is-invalid');
-                }
-            });
-
-            if (!isValid) {
-                e.preventDefault();
-                alert('Por favor complete todos los campos obligatorios.');
-            }
-        });
-    });
-    </script>
+    <script src="../Scripts/validaciones.js"></script>
 </body>
 </html>

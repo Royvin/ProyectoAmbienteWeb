@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -82,7 +81,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Catálogo</h5>
                     <p class="card-text">Explora nuestra amplia gama de repuestos.</p>
-                    <a href="#" class="btn btn-custom">Ver Catálogo</a>
+                    <a href="../Productos/Catalogo.php" class="btn btn-custom">Ver Catálogo</a>
                 </div>
             </div>
         </div>
@@ -108,7 +107,6 @@
     </div>
 
 
-    <!-- Footer -->
     <footer class="footer gradient-custom-2 text-white text-center text-lg-start mt-auto">
         <div class="container p-4">
             <div class="row">
