@@ -1,6 +1,7 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ProductosModel.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ProductosController.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/LoginController.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,7 +51,15 @@
                         </ul>
                     </li>
                 </ul>
-                <button id="logoutBtn" class="btn btn-outline-light">Cerrar Sesión</button>
+                
+                
+                    <form action="" method="POST" class="m-0 p-0">
+                        <button type="submit" name="btnSalir" class="btn btn-outline-light">
+                            Cerrar Sesión
+                        </button>
+                    </form>
+
+
             </div>
         </div>
     </nav>
