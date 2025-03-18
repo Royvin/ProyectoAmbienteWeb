@@ -2,67 +2,15 @@
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ProductosModel.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ProductosController.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/LoginController.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/View/layoutInterno.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Repuestos Grillo - Administrar Productos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="../Styles/estilos.css" rel="stylesheet">
-    <link href="../Styles/productos.css" rel="stylesheet">
-</head>
+<?php PrintCss(); ?>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../Login/home.php">
-                <img src="../imgs/logo.png" alt="Logo" width="50" height="50" class="me-2">
-                Repuestos Grillo
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Login/home.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Catalogo.php">Catálogo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown active" href="#">
-                            Administración
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="#">Administrar Productos</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Proveedores</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                
-                    <form action="" method="POST" class="m-0 p-0">
-                        <button type="submit" name="btnSalir" class="btn btn-outline-light">
-                            Cerrar Sesión
-                        </button>
-                    </form>
-
-
-            </div>
-        </div>
-    </nav>
+<?php BarraNavegacion(); ?>
 
     <div class="container content">
         <div class="admin-header">
@@ -167,19 +115,6 @@
         </div>
     </div>
 
-    <footer class="footer gradient-custom-2 text-white text-center text-lg-start mt-auto">
-        <div class="container p-4">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Repuestos Grillo</h5>
-                    <p>Comprometidos con la calidad y el servicio al cliente.</p>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Contacto</h5>
-                    <p>Teléfono: (555) 123-4567<br>Email: info@repuestosgrillo.com</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php PrintFooter(); ?>
 
     <script src="../Scripts/login.js"></script>

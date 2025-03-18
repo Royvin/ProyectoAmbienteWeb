@@ -24,15 +24,16 @@
                                     </div>
 
                                     <?php
-                                        if(isset($_POST["Message"])) {
-                                            echo '<div class="alert alert-warning Mensajes">'
-                                                 . $_POST["Message"] .
-                                                 '</div>';                                   
+                                        if(isset($_POST["Message"])){
+                                            echo '<div class="alert alert-warning Mensajes">' 
+                                                  . $_POST["Message"] . 
+                                                  '</div>';                                   
                                         }
                                     ?>
 
                                     <form action="" method="POST">
-                                        <h5 class="mb-4 text-center">Iniciar Sesión</h5>
+                                        <h5 class="mb-4 text-center">Recupera tu contraseña</h5>
+
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="txtCorreo">Correo Electrónico</label>
@@ -46,44 +47,24 @@
                                             />
                                         </div>
 
-                                        <div class="form-outline mb-4">
-                                            <label class="form-label" for="txtContrasenna">Contraseña</label>
-                                            <input 
-                                                type="password" 
-                                                id="txtContrasenna" 
-                                                name="txtContrasenna" 
-                                                class="form-control"
-                                                placeholder="Ingresa tu contraseña" 
-                                                required
-                                            />
-                                        </div>
 
                                         <div class="text-center pt-1 mb-2 pb-2">
                                             <button 
-                                                id="loginBtn" 
-                                                name="loginBtn"
+                                                id="recuperarCuentaBtn" 
+                                                name="recuperarCuentaBtn"
                                                 class="btn btn-primary btn-block fa-lg gradient-custom-2 w-100"
                                                 type="submit"
                                             >
-                                                Iniciar Sesión
+                                                Recuperar la Contraseña
                                             </button>
                                         </div>
 
                                         <div class="text-center mb-3">
-                                                <a class="text-muted" href="recuperarContrasenna.php">
-                                                    Recuperar tu contraseña
+                                            <span>¿Ya tienes cuenta? 
+                                                <a class="text-muted" href="login.php">
+                                                    Inicia Sesión
                                                 </a>
-                                        </div>
-
-                                        <div class="d-flex align-items-center justify-content-center pb-4">
-                                            <p class="mb-0 me-2">¿No tienes una cuenta?</p>
-                                            <button 
-                                                type="button" 
-                                                class="btn btn-outline-danger"
-                                                onclick="window.location.href='registrarCuenta.php'"
-                                            >
-                                                Crea una nueva cuenta
-                                            </button>
+                                            </span>
                                         </div>
                                     </form>
                                 </div>
@@ -91,7 +72,7 @@
 
                             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                    <h4 class="mb-4">¡Encuentra la pieza perfecta para tu auto, en El Grillo!</h4>
+                                    <h4 class="mb-4">¡Encuentra la pieza perfecta para tu auto en El Grillo!</h4>
                                     <p class="small mb-0">
                                         Somos tu aliado de confianza en el mantenimiento y cuidado de vehículos. 
                                         Con más de [X] años de experiencia en el mercado, ofrecemos una amplia gama 
