@@ -15,6 +15,7 @@
                 <div class="col-xl-10">
                     <div class="card rounded-3 text-black shadow">
                         <div class="row g-0">
+                            <!-- Columna del Formulario de Login -->
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
                                     <div class="text-center mb-4">
@@ -34,6 +35,10 @@
                                     <form action="" method="POST">
                                         <h5 class="mb-4 text-center">Iniciar Sesión</h5>
 
+                                    <form action="" method="POST">
+                                        <h5 class="mb-4 text-center">Iniciar Sesión</h5>
+
+                                        <!-- Correo Electrónico -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="txtCorreo">Correo Electrónico</label>
                                             <input 
@@ -46,6 +51,7 @@
                                             />
                                         </div>
 
+                                        <!-- Contraseña -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="txtContrasenna">Contraseña</label>
                                             <input 
@@ -58,6 +64,7 @@
                                             />
                                         </div>
 
+                                        <!-- Botón Iniciar Sesión -->
                                         <div class="text-center pt-1 mb-2 pb-2">
                                             <button 
                                                 id="loginBtn" 
@@ -75,6 +82,7 @@
                                                 </a>
                                         </div>
 
+                                        <!-- Sección para registro de nueva cuenta -->
                                         <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">¿No tienes una cuenta?</p>
                                             <button 
@@ -100,10 +108,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div><!-- card -->
+                </div><!-- col-xl-10 -->
+            </div><!-- row -->
+        </div><!-- container -->
     </section>
 
     <?php PrintScript(); ?>
