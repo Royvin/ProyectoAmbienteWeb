@@ -16,7 +16,7 @@ function BarraNavegacion()
     <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
         <div class="container-fluid">
             <!-- LOGO -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../Login/home.php">
                 <img src="../imgs/logo.png" alt="Logo" width="50" height="50" class="me-2">
                 Repuestos Grillo
             </a>
@@ -31,7 +31,7 @@ function BarraNavegacion()
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Inicio</a>
+                        <a class="nav-link active" href="../Login/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Productos/Catalogo.php">Catálogo</a>
@@ -49,7 +49,7 @@ function BarraNavegacion()
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">
                                 Administrar Productos</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Proveedores</a></li>
+                            <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Administrar Proveedores</a></li>
                             <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
                         </ul>
                     </li>
