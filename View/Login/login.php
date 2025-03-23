@@ -35,9 +35,6 @@
                                     <form action="" method="POST">
                                         <h5 class="mb-4 text-center">Iniciar Sesión</h5>
 
-                                    <form action="" method="POST">
-                                        <h5 class="mb-4 text-center">Iniciar Sesión</h5>
-
                                         <!-- Correo Electrónico -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="txtCorreo">Correo Electrónico</label>
