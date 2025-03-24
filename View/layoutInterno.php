@@ -47,10 +47,10 @@ function BarraNavegacion()
                             Administración
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">
-                                Administrar Productos</a></li>
+                            <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">Administrar Productos</a></li>
                             <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Administrar Proveedores</a></li>
                             <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
+                            <li><a class="dropdown-item" href="../Servicios/AdministrarServicios.php">Administrar Servicios</a></li>
                         </ul>
                     </li>
                 </ul>

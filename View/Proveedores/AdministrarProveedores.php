@@ -101,4 +101,3 @@
 
     <?php PrintFooter(); ?>
 
-    <script src="../Scripts/login.js"></script>

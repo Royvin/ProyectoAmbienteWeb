@@ -54,5 +54,3 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/View/layoutIntern
     </div>
 
     <?php PrintFooter(); ?>
-
-    <script src="../Scripts/login.js"></script>

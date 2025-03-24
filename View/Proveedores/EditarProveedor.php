@@ -61,5 +61,3 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/Proveedores
     </div>
 
     <?php PrintFooter(); ?>
-
-    <script src="../Scripts/login.js"></script>
