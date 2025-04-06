@@ -37,7 +37,7 @@ function BarraNavegacion()
                         <a class="nav-link" href="../Productos/Catalogo.php">Catálogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
+                        <a class="nav-link" href="../Servicios/MostrarServicios.php">Servicios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
@@ -85,6 +85,7 @@ function PrintCss()
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
             <link href="../Styles/estilos.css" rel="stylesheet">
             <link href="../Styles/productos.css" rel="stylesheet">
+            <link href="../Styles/servicios.css" rel="stylesheet">
         </head>';
 }
 

@@ -7,7 +7,7 @@
 <html lang="en">
 
 <?php PrintCss(); ?>
-
+<link href="../Styles/estilos.css" rel="stylesheet">
 <body>
     <?php BarraNavegacion(); ?>
 

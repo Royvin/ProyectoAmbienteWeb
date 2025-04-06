@@ -1,15 +1,13 @@
-/* Variables globales */
 :root {
-    --primary-color: #e31837;      /* Rojo principal */
-    --secondary-color: #1a1a1a;    /* Negro para contraste */
-    --accent-color: #f8d7da;       /* Rosa claro para acentos */
+    --primary-color: #e31837;
+    --secondary-color: #1a1a1a; 
+    --accent-color: #f8d7da;    
     --text-light: #ffffff;
     --text-dark: #333333;
     --gray-light: #f8f9fa;
     --transition: all 0.3s ease;
 }
 
-/* Reset y estilos base */
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +22,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar mejorado */
 .navbar.nav-gradient {
     background: var(--primary-color) !important;
     padding: 1rem;
@@ -72,13 +69,12 @@ body {
     width: 80%;
 }
 
-/* Contenido principal */
+
 .content {
     flex: 1 0 auto;
     padding: 3rem 0;
 }
 
-/* Hero section mejorado */
 .gradient-custom-2 {
     background: var(--primary-color) !important;
     color: var(--text-light) !important;
@@ -100,7 +96,6 @@ body {
     opacity: 0.1;
 }
 
-/* Cards mejoradas */
 .card-custom {
     border-radius: 1rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -124,7 +119,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Botones mejorados */
 .btn-custom {
     background: var(--primary-color);
     color: var(--text-light);
@@ -140,7 +134,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Sección de novedades */
 .card-header {
     background: var(--primary-color);
     color: var(--text-light);
@@ -159,7 +152,6 @@ body {
     background-color: var(--gray-light);
 }
 
-/* Footer mejorado */
 .footer {
     background: var(--secondary-color);
     color: var(--text-light);
@@ -189,7 +181,6 @@ body {
     line-height: 1.8;
 }
 
-/* Ajustes responsive */
 @media (max-width: 768px) {
     .navbar-collapse {
         background: var(--primary-color);
@@ -207,7 +198,6 @@ body {
     }
 }
 
-/* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -217,9 +207,7 @@ body {
     animation: fadeIn 0.5s ease-out;
 }
 
-/* Mantener todos los estilos anteriores y agregar/modificar: */
 
-/* Estilos para el dropdown en hover */
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
@@ -237,7 +225,6 @@ body {
     }
 }
 
-/* Estilos del Dropdown */
 .dropdown-menu {
     background-color: var(--text-light);
     border: none;
@@ -260,7 +247,6 @@ body {
     color: var(--text-light) !important;
 }
 
-/* Ajuste para el ícono del dropdown */
 .dropdown-toggle::after {
     border-top-color: var(--text-light);
     transition: var(--transition);
@@ -270,7 +256,6 @@ body {
     transform: rotate(180deg);
 }
 
-/* Ajuste responsive */
 @media (max-width: 768px) {
     .dropdown-menu {
         background-color: rgba(255,255,255,0.1);
@@ -287,12 +272,11 @@ body {
     }
 }
 
-/* Hero card con la imagen de fondo */
 .hero-card-alternative {
     position: relative;
     background: url('../imgs/repuestos-home.jpg') no-repeat center center;
     background-size: cover;
-    height: 300px; /* Ajusta la altura según sea necesario */
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,13 +289,13 @@ body {
     position: relative;
     background: url('../imgs/repuestos-home.jpg') no-repeat center center;
     background-size: cover;
-    height: 250px; /* Ajusta la altura según lo que necesites */
+    height: 250px;
     width:  800px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-radius: 15px; /* Bordes redondeados opcionales */
+    border-radius: 15px;
     overflow: hidden;
 }
 
@@ -321,7 +305,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar la visibilidad */
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
     width: 80%;
