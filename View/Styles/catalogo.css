@@ -1,0 +1,27 @@
+.card-img-container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.card-img-top {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.card-body {
+    min-height: 120px;
+}
+
+.card-title {
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 2.5em;
+    line-height: 1.25em;
+}

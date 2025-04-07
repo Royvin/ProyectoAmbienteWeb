@@ -26,38 +26,6 @@
                 </div>
             </div>
         </div>
-        <div class="card card-custom mb-4">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar productos...">
-                            <button class="btn btn-custom" type="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>Todas las categorías</option>
-                            <option>Motor</option>
-                            <option>Frenos</option>
-                            <option>Suspensión</option>
-                            <option>Eléctricos</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>Todos los proveedores</option>
-                            <option>Bosch</option>
-                            <option>Gates</option>
-                            <option>NGK</option>
-                            <option>Denso</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="card card-custom">
             <div class="card-body">
@@ -85,7 +53,7 @@
                 echo "<td>" . $row['Nombre'] . "</td>";
                 echo "<td>" . $row['IdCategoria'] . "</td>";
                 echo "<td>" . $row['IdProveedor'] . "</td>";
-                echo "<td>$" . number_format($row['Precio'], 2) . "</td>";
+                echo "<td>₡" . number_format($row['Precio'], 2) . "</td>";
                 echo "<td>" . $row['CantidadDisponible'] . "</td>";
                 echo "<td> <img src='data:image/jpeg;base64," . base64_encode($row['Imagen']) . "' width='100' height='100'/></td>";
                 echo "<td>

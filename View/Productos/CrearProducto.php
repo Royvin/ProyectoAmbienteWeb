@@ -84,7 +84,7 @@ $proveedores = ConsultarProveedores();
                             <div class="mb-4">
                                 <label for="precio" class="form-label">Precio *</label>
                                 <div class="input-group">
-                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">₡</span>
                                     <input type="number" class="form-control" id="precio" name="precio"
                                         placeholder="0.00" step="0.01" required>
                                 </div>

@@ -86,6 +86,7 @@ function PrintCss()
             <link href="../Styles/estilos.css" rel="stylesheet">
             <link href="../Styles/productos.css" rel="stylesheet">
             <link href="../Styles/servicios.css" rel="stylesheet">
+            <link href="../Styles/catalogo.css" rel="stylesheet">
         </head>';
 }
 
@@ -95,6 +96,7 @@ function PrintScript()
         <script src="../Scripts/jquery.min.js"></script>
         <script src="../Scripts/bootstrap.bundle.min.js"></script>
         <script src="../Scripts/jquery.easing.min.js"></script>
+        <script src="../Scripts/sb-admin-2.min.js"></script>
         <script src="../Scripts/sb-admin-2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     ';
