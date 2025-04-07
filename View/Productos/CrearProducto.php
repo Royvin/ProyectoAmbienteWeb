@@ -71,7 +71,7 @@ $proveedores = ConsultarProveedores();
 
         <div class="card card-custom">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-4">
@@ -132,6 +132,12 @@ $proveedores = ConsultarProveedores();
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="imagen" class="form-label">Imagen del Producto *</label>
+                                <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
+                            </div>
+                        </div>
                     <div class="d-flex justify-content-end mt-4">
                         <a href="AdministrarProductos.php" class="btn btn-outline-custom me-2">Cancelar</a>
                         <button type="submit" class="btn btn-custom" id="btnCrear" name="btnCrear">

@@ -1,13 +1,16 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/BaseDatosModel.php";
 
-function CrearProducto($nombre, $precio ,$cantidad, $idcategoria, $idproveedor)
+function CrearProducto($nombre, $precio ,$cantidad, $idcategoria, $idproveedor, $imagen)
 {
     try {
         $context = AbrirBaseDatos();
-        $sentencia = "CALL SP_CrearProducto('$nombre','$precio','$cantidad','$idcategoria', '$idproveedor')";
-        $resultado = $context->query($sentencia);
+        $stmt = $context->prepare("CALL SP_CrearProducto(?, ?, ?, ?, ?, ?)");
 
+        $stmt->bind_param("sdiiib", $nombre, $precio ,$cantidad, $idcategoria, $idproveedor, $null);
+        $stmt->send_long_data(5, $imagen); 
+
+        $resultado = $stmt->execute();
         CerrarBaseDatos($context);
 
         return $resultado;
@@ -49,16 +52,19 @@ function EliminarProducto($idProducto)
     }
 }
 
-function EditarProducto($idProducto, $nombre, $precio, $cantidadDisponible, $idCategoria, $idProveedor) {
+function EditarProducto($idProducto, $nombre, $precio, $cantidadDisponible, $idCategoria, $idProveedor, $imagen) {
     try {
         $context = AbrirBaseDatos();
-        $sentencia = "CALL SP_EditarProductos($idProducto, '$nombre', $precio, $cantidadDisponible, $idCategoria, $idProveedor)";
-        $resultado = $context->query($sentencia);
-        
+        $stmt = $context->prepare("CALL SP_EditarProductos(?, ?, ?, ?, ?, ?, ?)");
+
+        $stmt->bind_param("isdiiib", $idProducto, $nombre, $precio, $cantidadDisponible, $idCategoria, $idProveedor, $null);
+        $stmt->send_long_data(6, $imagen);
+
+        $resultado = $stmt->execute();
         CerrarBaseDatos($context);
-        
+
         return $resultado;
-    } catch (Exception $error) {
+    } catch (mysqli_sql_exception $error) {
         return $error->getMessage();
     }
 }

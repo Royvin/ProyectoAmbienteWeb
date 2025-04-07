@@ -71,6 +71,7 @@
                                 <th>Proveedor</th>
                                 <th>Precio</th>
                                 <th>Cantidad Disponible</th>
+                                <th>Imagen</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -86,6 +87,7 @@
                 echo "<td>" . $row['IdProveedor'] . "</td>";
                 echo "<td>$" . number_format($row['Precio'], 2) . "</td>";
                 echo "<td>" . $row['CantidadDisponible'] . "</td>";
+                echo "<td> <img src='data:image/jpeg;base64," . base64_encode($row['Imagen']) . "' width='100' height='100'/></td>";
                 echo "<td>
                         <form action='EditarProducto.php' method='GET' style='display:inline;'>
                             <input type='hidden' name='idProducto' value='" . $row['IdProductos'] . "'>

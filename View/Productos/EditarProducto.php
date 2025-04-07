@@ -76,7 +76,7 @@ $proveedores = ConsultarProveedores();
                 <div class="alert alert-danger"><?php echo $_POST["Message"]; ?></div>
                 <?php endif; ?>
 
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="idProducto" value="<?php echo $producto['IdProductos']; ?>">
 
                     <div class="row">
@@ -142,6 +142,21 @@ $proveedores = ConsultarProveedores();
                                 <input type="number" class="form-control" id="cantidad" name="cantidad"
                                     value="<?php echo $producto['CantidadDisponible']; ?>" min="0" step="1" required>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="imagen" class="form-label">Imagen del Producto</label>
+                                <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <?php if (!empty($producto['Imagen'])): ?>
+                                <label class="form-label">Imagen actual:</label>
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['Imagen']); ?>" class="img-thumbnail" width="150">
+                            <?php endif; ?>
                         </div>
                     </div>
 
