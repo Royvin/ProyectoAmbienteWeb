@@ -87,6 +87,7 @@ function PrintCss()
             <link href="../Styles/productos.css" rel="stylesheet">
             <link href="../Styles/servicios.css" rel="stylesheet">
             <link href="../Styles/catalogo.css" rel="stylesheet">
+            <link href="../Styles/carrito.css" rel="stylesheet">
         </head>';
 }
 
