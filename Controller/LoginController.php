@@ -89,8 +89,6 @@
             Recuerde realizar el cambio de contraseña una vez que ingrese al sistema nuevamente. </b><br/>";
 
             $resultadoCorreo = EnviarCorreo("Recuperar Contraseña",$contenido, $datos["Correo"]);
-
-            $resultadoCorreo == true;
         
             if($resultadoCorreo == true)
             {
