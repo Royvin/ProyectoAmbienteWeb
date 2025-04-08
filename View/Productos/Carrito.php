@@ -40,6 +40,19 @@
             <div class="card-body">
                 <!-- Mensajes de alerta -->
                 <div id="alert-container">
+                    <?php
+                    // Mostrar mensaje si existe en la sesión
+                    if (isset($_SESSION['mensaje'])) {
+                        $tipo = isset($_SESSION['tipo_mensaje']) ? $_SESSION['tipo_mensaje'] : 'success';
+                        echo '<div class="alert alert-' . $tipo . ' alert-dismissible fade show" role="alert">
+                                ' . $_SESSION['mensaje'] . '
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div>';
+                        // Limpiar las variables de sesión después de mostrar el mensaje
+                        unset($_SESSION['mensaje']);
+                        unset($_SESSION['tipo_mensaje']);
+                    }
+                    ?>
                 </div>
                 
                 <?php if ($itemsCarrito && $itemsCarrito->num_rows > 0): ?>
@@ -63,29 +76,26 @@
                                         <td><?php echo $item['Nombre']; ?></td>
                                         <td>₡<?php echo number_format($item['Precio'], 2); ?></td>
                                         <td>
-                                            <div class="input-group" style="max-width: 150px;">
-                                                <button class="btn btn-outline-secondary btn-sm btn-restar" 
-                                                        data-id="<?php echo $item['Id']; ?>">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                                <input type="number" class="form-control text-center cantidad-item" 
-                                                       value="<?php echo $item['Cantidad']; ?>" 
-                                                       min="1" max="99"
-                                                       data-id="<?php echo $item['Id']; ?>">
-                                                <button class="btn btn-outline-secondary btn-sm btn-sumar" 
-                                                        data-id="<?php echo $item['Id']; ?>">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </div>
+                                            <form action="/ProyectoAmbienteWeb/Controller/CarritoController.php" method="POST" class="cantidad-form">
+                                                <div class="input-group" style="max-width: 150px;">
+                                                    <input type="hidden" name="itemId" value="<?php echo $item['Id']; ?>">
+                                                    <input type="number" name="cantidad" class="form-control text-center" 
+                                                        value="<?php echo $item['Cantidad']; ?>" 
+                                                        min="1" max="99">
+                                                    <button type="submit" name="btnActualizarCantidad" class="btn btn-outline-primary btn-sm">
+                                                        <i class="fas fa-sync-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </td>
                                         <td class="subtotal">₡<?php echo number_format($subtotal, 2); ?></td>
                                         <td>
-                                        <form action="" method="POST" style="display:inline;">
-                                            <input type="hidden" name="itemid" value="<?php echo $item['Id']; ?>">
-                                            <button type='submit' class='action-btn delete-btn' name='btnEliminarItem'>
-                                                <i class='fas fa-trash'></i>
-                                            </button>
-                                        </form>
+                                            <form action="/ProyectoAmbienteWeb/Controller/CarritoController.php" method="POST" style="display:inline;">
+                                                <input type="hidden" name="itemid" value="<?php echo $item['Id']; ?>">
+                                                <button type='submit' class='action-btn delete-btn' name='btnEliminarItem'>
+                                                    <i class='fas fa-trash'></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
@@ -101,11 +111,11 @@
                     </div>
                     
                     <div class="mt-3 d-flex justify-content-between">
-                        <form action="" method="POST" style="display: inline;">
+                        <form action="/ProyectoAmbienteWeb/Controller/CarritoController.php" method="POST" style="display: inline;">
                             <input type="hidden" name="btnVaciar" value="1">
-                                <button type="submit" class="btn btn-warning">
-                                    <i class="fas fa-trash"></i> Vaciar Carrito
-                                </button>
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fas fa-trash"></i> Vaciar Carrito
+                            </button>
                         </form>
                         <button id="btn-finalizar" class="btn btn-primary">
                             <i class="fas fa-check"></i> Finalizar Compra
@@ -126,3 +136,5 @@
     </div>
 
     <?php PrintFooter(); ?>
+</body>
+</html>

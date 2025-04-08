@@ -33,7 +33,21 @@
         <div class="card card-custom">
             <div class="card-body">
                 <!-- Mensajes de alerta -->
-                <div id="alert-container"></div>
+                <div id="alert-container">
+                    <?php
+                    // Mostrar mensaje si existe en la sesión
+                    if (isset($_SESSION['mensaje'])) {
+                        $tipo = isset($_SESSION['tipo_mensaje']) ? $_SESSION['tipo_mensaje'] : 'success';
+                        echo '<div class="alert alert-' . $tipo . ' alert-dismissible fade show" role="alert">
+                                ' . $_SESSION['mensaje'] . '
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div>';
+                        // Limpiar las variables de sesión después de mostrar el mensaje
+                        unset($_SESSION['mensaje']);
+                        unset($_SESSION['tipo_mensaje']);
+                    }
+                    ?>
+                </div>
                 
                 <div class="row">
                     <?php
@@ -54,7 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <form action="/ProyectoAmbienteWeb/Controller/CarritoController.php" method="post">
+                                        <form action="/ProyectoAmbienteWeb/Controller/CarritoController.php" method="post" class="form-añadir-carrito">
                                             <input type="hidden" name="productoId" value="<?php echo $row['IdProductos']; ?>">
                                             <input type="hidden" name="cantidad" value="1">
                                             <button type="submit" name="btnAñadirCarrito" class="btn btn-success w-100">
@@ -76,51 +90,5 @@
     </div>
 
     <?php PrintFooter(); ?>
-    
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Función para mostrar alertas
-    function mostrarAlerta(mensaje, tipo) {
-        const alertContainer = document.getElementById('alert-container');
-        const alert = document.createElement('div');
-        alert.className = `alert alert-${tipo} alert-dismissible fade show`;
-        alert.innerHTML = `
-            ${mensaje}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-        alertContainer.appendChild(alert);
-        
-        // Auto-eliminar alerta después de 3 segundos
-        setTimeout(() => {
-            alert.classList.remove('show');
-            setTimeout(() => {
-                alertContainer.removeChild(alert);
-            }, 150);
-        }, 3000);
-    }
-    // Actualizar contador de carrito
-    function actualizarContadorCarrito() {
-        fetch('/ProyectoAmbienteWeb/Controller/CarritoController.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'action=obtenerConteoCarrito'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                document.getElementById('carrito-contador').textContent = data.count;
-            }
-        })
-        .catch(error => {
-            console.error('Error al actualizar contador:', error);
-        });
-    }
-    
-    // Actualizar contador al cargar la página
-    actualizarContadorCarrito();
-});
-</script>
 </body>
 </html>
