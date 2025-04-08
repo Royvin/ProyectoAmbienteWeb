@@ -56,18 +56,18 @@
                         <p class="card-text">
                             Asesoramiento técnico y soluciones integrales.
                         </p>
-                        <a href="#" class="btn btn-custom">Conocer Más</a>
+                        <a href="../Servicios/MostrarServicios.php" class="btn btn-custom">Conocer Más</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-4 card-custom">
                     <div class="card-body">
-                        <h5 class="card-title">Contacto</h5>
+                        <h5 class="card-title">Pedidos</h5>
                         <p class="card-text">
-                            Estamos listos para ayudarte.
+                            Mira tu historial de pedido aca.
                         </p>
-                        <a href="#" class="btn btn-custom">Contactar</a>
+                        <a href="../Pedidos/ListaPedidos.php" class="btn btn-custom">Ver Pedidos</a>
                     </div>
                 </div>
             </div>

@@ -40,7 +40,7 @@ function BarraNavegacion()
                         <a class="nav-link" href="../Servicios/MostrarServicios.php">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="../Pedidos/ListaPedidos.php">Pedidos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#">

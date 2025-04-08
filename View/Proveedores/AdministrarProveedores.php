@@ -26,29 +26,6 @@
                 </div>
             </div>
         </div>
-        <div class="card card-custom mb-4">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar Proveedores...">
-                            <button class="btn btn-custom" type="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>Todos los proveedores</option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="card card-custom">
             <div class="card-body">
@@ -59,6 +36,7 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Contacto</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

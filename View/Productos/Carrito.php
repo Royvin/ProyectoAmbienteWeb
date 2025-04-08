@@ -2,6 +2,7 @@
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/CarritoModel.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/CarritoController.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/View/layoutInterno.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/LoginController.php";
     
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -117,9 +118,11 @@
                                 <i class="fas fa-trash"></i> Vaciar Carrito
                             </button>
                         </form>
-                        <button id="btn-finalizar" class="btn btn-primary">
-                            <i class="fas fa-check"></i> Finalizar Compra
-                        </button>
+                        <form action="/ProyectoAmbienteWeb/Controller/PedidosController.php" method="POST" style="display: inline;">
+                            <button type="submit" name="btnFinalizarCompra" class="btn btn-primary">
+                                <i class="fas fa-check"></i> Realizar Pedido
+                            </button>
+                        </form>
                     </div>
                 <?php else: ?>
                     <div class="text-center py-5">
