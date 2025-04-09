@@ -51,7 +51,11 @@ function BarraNavegacion()
                             <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Administrar Proveedores</a></li>
                             <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
                             <li><a class="dropdown-item" href="../Servicios/AdministrarServicios.php">Administrar Servicios</a></li>
+                            <li><a class="dropdown-item" href="../Reseñas/AdministrarResena.php">Administrar Reseñas</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Reseñas/CrearResena.php">Reseñas</a>
                     </li>
                 </ul>
 
@@ -88,6 +92,7 @@ function PrintCss()
             <link href="../Styles/servicios.css" rel="stylesheet">
             <link href="../Styles/catalogo.css" rel="stylesheet">
             <link href="../Styles/carrito.css" rel="stylesheet">
+</head>
         </head>';
 }
 

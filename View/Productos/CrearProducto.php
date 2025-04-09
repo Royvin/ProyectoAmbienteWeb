@@ -2,6 +2,7 @@
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ProductosController.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/CategoriasModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ProveedoresModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/View/layoutInterno.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/LoginController.php";
 
 $categorias = ConsultarCategorias();
@@ -21,44 +22,7 @@ $proveedores = ConsultarProveedores();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../Login/home.php">
-                <img src="../imgs/logo.png" alt="Logo" width="50" height="50" class="me-2">
-                Repuestos Grillo
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Login/home.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Catalogo.php">Catálogo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown active" href="#">
-                            Administración
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="AdministrarProductos.php">Administrar Productos</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Proveedores</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <button id="logoutBtn" class="btn btn-outline-light">Cerrar Sesión</button>
-            </div>
-        </div>
-    </nav>
+    <?php BarraNavegacion(); ?>
 
     <div class="container content">
         <div class="admin-header">
@@ -128,17 +92,17 @@ $proveedores = ConsultarProveedores();
                         <div class="col-md-4">
                             <div class="mb-4">
                                 <label for="cantidad" class="form-label">Cantidad Disponible *</label>
-                                <input type="number" class="form-control" id="cantidad" name="cantidad"
-                                    placeholder="0" min="0" step="1" required>
+                                <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="0"
+                                    min="0" step="1" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                            <div class="mb-4">
-                                <label for="imagen" class="form-label">Imagen del Producto *</label>
-                                <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
-                            </div>
+                        <div class="mb-4">
+                            <label for="imagen" class="form-label">Imagen del Producto *</label>
+                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
                         </div>
+                    </div>
                     <div class="d-flex justify-content-end mt-4">
                         <a href="AdministrarProductos.php" class="btn btn-outline-custom me-2">Cancelar</a>
                         <button type="submit" class="btn btn-custom" id="btnCrear" name="btnCrear">
@@ -170,4 +134,5 @@ $proveedores = ConsultarProveedores();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../Scripts/validaciones.js"></script>
 </body>
+
 </html>

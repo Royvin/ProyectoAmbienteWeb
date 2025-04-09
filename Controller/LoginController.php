@@ -35,6 +35,7 @@
             // Asegúrate de tener session_start() antes de esto
             $_SESSION["NombreUsuario"] = $datos["NombreUsuario"];
             $_SESSION["IdUsuario"] = $datos["Id"];
+            $_SESSION["CorreoUsuario"] = $datos["CorreoUsuario"] ;
             
             // Redirige al home
             header('Location: ../../View/Login/home.php');

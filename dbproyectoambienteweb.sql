@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `dbproyectoambienteweb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `dbproyectoambienteweb`;
--- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: dbproyectoambienteweb
 -- ------------------------------------------------------
@@ -218,6 +218,34 @@ INSERT INTO `tbl_proveedores` VALUES (1,'Repuestos Rápidos S.A.','contacto@repu
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_resena`
+--
+
+DROP TABLE IF EXISTS `tbl_resena`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_resena` (
+  `idResena` int(11) NOT NULL AUTO_INCREMENT,
+  `IdUsuario` bigint(5) NOT NULL,
+  `motivo` varchar(255) NOT NULL,
+  `comentario` longtext NOT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`idResena`),
+  KEY `IdUsuario_idx` (`IdUsuario`),
+  CONSTRAINT `fk_IdUsuario` FOREIGN KEY (`IdUsuario`) REFERENCES `usuario` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_resena`
+--
+
+LOCK TABLES `tbl_resena` WRITE;
+/*!40000 ALTER TABLE `tbl_resena` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_resena` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_servicios`
 --
 
@@ -268,10 +296,6 @@ LOCK TABLES `usuario` WRITE;
 INSERT INTO `usuario` VALUES (1,'123','123@12.com','123'),(2,'Carlos','test@test.com','123'),(3,'Daniel Gutierrez','test2@test.com','123'),(4,'Dani','prueba@test.com','123'),(5,'Carlos Gutierrez','cdaniguti04@gmail.com','CBEYE2'),(6,'Felipe','afba.2599@outlook.com','123'),(8,'Royvin Arrieta','royvin1205@gmail.com','123'),(10,'Fabian Arrieta','royvintest@gmail.com','1234'),(11,'Fabian Arrieta','royvintest@gmail.com','1234');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'dbproyectoambienteweb'
---
 
 --
 -- Dumping routines for database 'dbproyectoambienteweb'
@@ -603,6 +627,34 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_ConsultarResenas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ConsultarResenas`()
+BEGIN
+
+	SELECT	r.idResena,
+			u.Nombre,
+            u.Correo,
+            r.motivo,
+            r.comentario,
+            r.fecha
+	FROM 	tbl_resena r
+    INNER JOIN  usuario u on r.IdUsuario = u.Id;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_ConsultarServicioPorId` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -741,6 +793,32 @@ BEGIN
 
 	INSERT INTO `dbproyectoambienteweb`.`tbl_proveedores`(`Nombre`,`Contacto`)
 	VALUES(pNombre,pContacto);
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_CrearResena` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CrearResena`(
+	pIdUsuario bigint,
+	pMotivo varchar(100),
+    pComentario longtext
+)
+BEGIN
+
+	INSERT INTO `dbproyectoambienteweb`.`tbl_resena`(`IdUsuario`,`motivo`,`comentario`,`fecha`)
+	VALUES(pIdUsuario,pMotivo,pComentario,current_date);
 
 END ;;
 DELIMITER ;
@@ -960,7 +1038,7 @@ BEGIN
     SELECT 
         Id,
         Nombre AS NombreUsuario,
-        Correo,
+        Correo AS CorreoUsuario,
         Contrasenna
     FROM usuario
     WHERE Correo = pCorreo
@@ -1052,4 +1130,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-08 16:20:41
+-- Dump completed on 2025-04-09 15:57:27

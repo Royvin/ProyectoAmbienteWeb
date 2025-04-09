@@ -16,7 +16,7 @@
         <div class="admin-header">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <h1 class="mb-0">Administrar Proveedores</h1>
+                    <h1 class="mb-0">Administrar Reseñas</h1>
                     <p class="mb-0">Gestiona los proveedores autorizados de nuestra empresa</p>
                 </div>
                 <div class="col-md-4 text-md-end mt-3 mt-md-0">
@@ -78,4 +78,3 @@
     </div>
 
     <?php PrintFooter(); ?>
-
