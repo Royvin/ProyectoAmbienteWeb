@@ -42,6 +42,9 @@ function BarraNavegacion()
                     <li class="nav-item">
                         <a class="nav-link" href="../Pedidos/ListaPedidos.php">Pedidos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Reseñas/CrearResena.php">Reseñas</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#">
                             Administración
@@ -49,13 +52,10 @@ function BarraNavegacion()
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">Administrar Productos</a></li>
                             <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Administrar Proveedores</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
                             <li><a class="dropdown-item" href="../Servicios/AdministrarServicios.php">Administrar Servicios</a></li>
+                            <li><a class="dropdown-item" href="../Pedidos/AdministrarPedidos.php">Administrar Pedidos</a></li>
                             <li><a class="dropdown-item" href="../Reseñas/AdministrarResena.php">Administrar Reseñas</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Reseñas/CrearResena.php">Reseñas</a>
                     </li>
                 </ul>
 

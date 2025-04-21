@@ -7,9 +7,11 @@
         session_start();
     }
     
-    // Obtener los pedidos del usuario
-    $idUsuario = $_SESSION['IdUsuario'];
-    $pedidos = ObtenerPedidosUsuario($idUsuario);
+    // Obtener todos los pedidos
+    $pedidos = ConsultarTodosPedidos();
+    
+    // Filtrar por estado si se proporciona
+    $filtroEstado = isset($_GET['estado']) ? $_GET['estado'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +24,36 @@
 
     <div class="container content">
         <div class="admin-header">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h1 class="mb-0">Mis Pedidos</h1>
-                    <p class="mb-0">Historial de tus compras</p>
+            <div class="row align-items-center mb-3">
+                <div class="col-md-6">
+                    <h1 class="mb-0">Administración de Pedidos</h1>
+                    <p class="mb-0">Gestión de todos los pedidos en el sistema</p>
                 </div>
-                <div class="col-md-4 text-end">
-                    <a href="/ProyectoAmbienteWeb/View/Productos/Catalogo.php" class="btn btn-success">
-                        <i class="fas fa-arrow-left"></i> Volver al Catálogo
+                <div class="col-md-6 text-end">
+                    <a href="/ProyectoAmbienteWeb/View/Admin/Dashboard.php" class="btn btn-success">
+                        <i class="fas fa-arrow-left"></i> Volver al Dashboard
                     </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card card-custom mb-4">
+            <div class="card-header bg-red">
+                <h5 class="mb-0"><i class="fas fa-filter"></i> Filtros</h5>
+            </div>
+            <div class="card-body">
+                <div class="mt-3">
+                    <div class="btn-group" role="group" aria-label="Filtros rápidos">
+                        <a href="?estado=" class="btn <?php echo $filtroEstado == '' ? 'btn-primary' : 'btn-outline-primary'; ?>">
+                            <i class="fas fa-list"></i> Todos
+                        </a>
+                        <a href="?estado=Pendiente" class="btn <?php echo $filtroEstado == 'Pendiente' ? 'btn-primary' : 'btn-outline-primary'; ?>">
+                            <i class="fas fa-clock"></i> Pendientes
+                        </a>
+                        <a href="?estado=Completado" class="btn <?php echo $filtroEstado == 'Completado' ? 'btn-primary' : 'btn-outline-primary'; ?>">
+                            <i class="fas fa-check-circle"></i> Completados
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,6 +82,7 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th>Pedido #</th>
+                                    <th>Cliente</th>
                                     <th>Fecha</th>
                                     <th>Total</th>
                                     <th>Estado</th>
@@ -66,9 +90,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($pedido = $pedidos->fetch_assoc()): ?>
+                                <?php 
+                                while ($pedido = $pedidos->fetch_assoc()): 
+                                    // Filtro por estado
+                                    if ($filtroEstado && $pedido['EstadoPedido'] != $filtroEstado) continue;
+                                ?>
                                     <tr>
                                         <td><?php echo $pedido['IdPedido']; ?></td>
+                                        <td><?php echo $pedido['NombreUsuario']; ?></td>
                                         <td><?php echo date('d/m/Y H:i', strtotime($pedido['FechaPedido'])); ?></td>
                                         <td>₡<?php echo number_format($pedido['TotalPedido'], 2); ?></td>
                                         <td>
@@ -91,16 +120,7 @@
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<?php echo $pedido['IdPedido']; ?>">
                                                         <li>
-                                                            <form method="post" action="" class="dropdown-item">
-                                                                <input type="hidden" name="idPedido" value="<?php echo $pedido['IdPedido']; ?>">
-                                                                <input type="hidden" name="nuevoEstado" value="Pendiente">
-                                                                <button type="submit" name="actualizarEstado" class="btn btn-link p-0 text-decoration-none">
-                                                                    <i class="fas fa-clock text-warning"></i> Marcar como Pendiente
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                        <li>
-                                                            <form method="post" action="" class="dropdown-item">
+                                                            <form method="post" action="/ProyectoAmbienteWeb/Controller/PedidosController.php" class="dropdown-item">
                                                                 <input type="hidden" name="idPedido" value="<?php echo $pedido['IdPedido']; ?>">
                                                                 <input type="hidden" name="nuevoEstado" value="Completado">
                                                                 <button type="submit" name="actualizarEstado" class="btn btn-link p-0 text-decoration-none">
@@ -120,12 +140,7 @@
                     </div>
                 <?php else: ?>
                     <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i> No tienes pedidos registrados todavía.
-                    </div>
-                    <div class="text-center mt-3">
-                        <a href="/ProyectoAmbienteWeb/View/Productos/Catalogo.php" class="btn btn-primary">
-                            <i class="fas fa-shopping-cart"></i> Ir a Comprar
-                        </a>
+                        <i class="fas fa-info-circle"></i> No hay pedidos registrados en el sistema.
                     </div>
                 <?php endif; ?>
             </div>

@@ -95,11 +95,58 @@ if (isset($_POST['btnFinalizarCompra'])) {
     exit;
 }
 
+if (isset($_POST['actualizarEstado'])) {
+    $idPedido = $_POST['idPedido'];
+    $nuevoEstado = $_POST['nuevoEstado'];
+    
+    if ($nuevoEstado != 'Pendiente' && $nuevoEstado != 'Completado') {
+        $nuevoEstado = 'Pendiente';
+    }
+    
+    $pedido = ObtenerPedidoPorId($idPedido);
+    
+    if (!$pedido) {
+        $_SESSION['mensaje'] = "El pedido no existe.";
+        $_SESSION['tipo_mensaje'] = "danger";
+        header("Location: /ProyectoAmbienteWeb/View/Pedidos/ListaPedidos.php");
+        exit;
+    }
+    
+    // Si el estado actual ya es "Completado", no permitir cambios
+    if ($pedido['EstadoPedido'] == 'Completado') {
+        $_SESSION['mensaje'] = "No se puede modificar un pedido que ya ha sido completado.";
+        $_SESSION['tipo_mensaje'] = "warning";
+        header("Location: /ProyectoAmbienteWeb/View/Pedidos/ListaPedidos.php");
+        exit;
+    }
+    
+    $resultado = ActualizarEstadoPedido($idPedido, $nuevoEstado);
+    
+    if ($resultado) {
+        $_SESSION['mensaje'] = "El estado del pedido ha sido actualizado a '$nuevoEstado'.";
+        $_SESSION['tipo_mensaje'] = "success";
+    } else {
+        $_SESSION['mensaje'] = "Error al actualizar el estado del pedido.";
+        $_SESSION['tipo_mensaje'] = "danger";
+    }
+    
+    header("Location: /ProyectoAmbienteWeb/View/Pedidos/ListaPedidos.php");
+    exit;
+}
+
+function ObtenerPedidoPorId($idPedido) {
+    return ConsultarPedidoPorId($idPedido);
+}
+
 function ObtenerPedidosUsuario($idUsuario) {
     return ConsultarPedidosPorUsuario($idUsuario);
 }
 
 function ObtenerDetallesPedido($idPedido) {
     return ConsultarDetallePedido($idPedido);
+}
+
+function ConsultarTodosPedidos() {
+    return ObtenerTodosPedidos();
 }
 ?>

@@ -51,7 +51,7 @@
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='7' class='text-center'>No hay Productos registrados</td></tr>";
+            echo "<tr><td colspan='7' class='text-center'>No hay Reseñas registradas</td></tr>";
         }
     ?>
                         </tbody>
