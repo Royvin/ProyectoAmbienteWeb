@@ -37,20 +37,24 @@ function BarraNavegacion()
                         <a class="nav-link" href="../Productos/Catalogo.php">Catálogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
+                        <a class="nav-link" href="../Servicios/MostrarServicios.php">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="../Pedidos/ListaPedidos.php">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Reseñas/CrearResena.php">Reseñas</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#">
                             Administración
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">
-                                Administrar Productos</a></li>
+                            <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">Administrar Productos</a></li>
                             <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Administrar Proveedores</a></li>
-                            <li><a class="dropdown-item" href="#">Administrar Órdenes</a></li>
+                            <li><a class="dropdown-item" href="../Servicios/AdministrarServicios.php">Administrar Servicios</a></li>
+                            <li><a class="dropdown-item" href="../Pedidos/AdministrarPedidos.php">Administrar Pedidos</a></li>
+                            <li><a class="dropdown-item" href="../Reseñas/AdministrarResena.php">Administrar Reseñas</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -85,6 +89,10 @@ function PrintCss()
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
             <link href="../Styles/estilos.css" rel="stylesheet">
             <link href="../Styles/productos.css" rel="stylesheet">
+            <link href="../Styles/servicios.css" rel="stylesheet">
+            <link href="../Styles/catalogo.css" rel="stylesheet">
+            <link href="../Styles/carrito.css" rel="stylesheet">
+</head>
         </head>';
 }
 
@@ -94,6 +102,7 @@ function PrintScript()
         <script src="../Scripts/jquery.min.js"></script>
         <script src="../Scripts/bootstrap.bundle.min.js"></script>
         <script src="../Scripts/jquery.easing.min.js"></script>
+        <script src="../Scripts/sb-admin-2.min.js"></script>
         <script src="../Scripts/sb-admin-2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     ';

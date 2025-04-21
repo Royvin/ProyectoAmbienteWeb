@@ -58,7 +58,6 @@
     transform: scale(1.1);
 }
 
-/* Estilos para los formularios */
 .form-control {
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
@@ -76,7 +75,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* Estilos para modales */
 .modal-content {
     border-radius: 1rem;
     border: none;
@@ -110,12 +108,10 @@
     color: var(--text-light);
 }
 
-/* Estilos para el botón de cierre en el modal */
 .btn-close-white {
     filter: brightness(0) invert(1);
 }
 
-/* Ajustes responsive */
 @media (max-width: 768px) {
     .table-container {
         overflow-x: auto;
@@ -128,5 +124,6 @@
     
     .admin-header {
         padding: 1rem;
+        margin-bottom: 15px;
     }
 }

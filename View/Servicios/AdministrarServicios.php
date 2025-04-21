@@ -1,6 +1,6 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ProductosModel.php";
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ProductosController.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/ServiciosModel.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/ServiciosController.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/LoginController.php";
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/View/layoutInterno.php";
 ?>
@@ -16,17 +16,17 @@
         <div class="admin-header">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <h1 class="mb-0">Administrar Productos</h1>
-                    <p class="mb-0">Gestiona el inventario de repuestos automotrices</p>
+                    <h1 class="mb-0">Administrar Servicios</h1>
+                    <p class="mb-0">Gestiona los servicios automotrices</p>
                 </div>
                 <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                    <button type="button" class="btn btn-custom" onclick="window.location.href='CrearProducto.php';">
-                        <i class="fas fa-plus me-2"></i>Nuevo Producto
+                    <button type="button" class="btn btn-custom" onclick="window.location.href='CrearServicio.php';">
+                        <i class="fas fa-plus me-2"></i>Nuevo Servicio
                     </button>
                 </div>
             </div>
         </div>
-
+        
         <div class="card card-custom">
             <div class="card-body">
                 <div class="table-container">
@@ -35,39 +35,32 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Categoría</th>
-                                <th>Proveedor</th>
-                                <th>Precio</th>
-                                <th>Cantidad Disponible</th>
+                                <th>Descripción</th>
                                 <th>Imagen</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-        $productos = ConsultarProductos();
-        if ($productos && $productos->num_rows > 0) {
-            while ($row = $productos->fetch_assoc()) {
+                        <?php
+        $servicios = ConsultarServicios();
+        if ($servicios && $servicios->num_rows > 0) {
+            while ($row = $servicios->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row['IdProductos'] . "</td>";
+                echo "<td>" . $row['IDServicio'] . "</td>";
                 echo "<td>" . $row['Nombre'] . "</td>";
-                echo "<td>" . $row['IdCategoria'] . "</td>";
-                echo "<td>" . $row['IdProveedor'] . "</td>";
-                echo "<td>₡" . number_format($row['Precio'], 2) . "</td>";
-                echo "<td>" . $row['CantidadDisponible'] . "</td>";
+                echo "<td>" . $row['Descripcion'] . "</td>";
                 echo "<td> <img src='data:image/jpeg;base64," . base64_encode($row['Imagen']) . "' width='100' height='100'/></td>";
                 echo "<td>
-                        <form action='EditarProducto.php' method='GET' style='display:inline;'>
-                            <input type='hidden' name='idProducto' value='" . $row['IdProductos'] . "'>
+                        <form action='EditarServicio.php' method='GET' style='display:inline;'>
+                            <input type='hidden' name='idServicio' value='" . $row['IDServicio'] . "'>
                             <button type='submit' class='action-btn edit-btn'>
                                 <i class='fas fa-edit'></i>
                             </button>
                         </form>
 
-
                         <form action='' method='POST' style='display:inline;'>
-                            <input type='hidden' name='idProducto' value='" . $row['IdProductos'] . "'>
-                            <button type='submit' class='action-btn delete-btn' name='btnEliminar' onclick='return confirm(\"¿Estás seguro de que quieres eliminar este producto?\");'>
+                            <input type='hidden' name='idServicio' value='" . $row['IDServicio'] . "'>
+                            <button type='submit' class='action-btn delete-btn' name='btnEliminar' onclick='return confirm(\"¿Estás seguro de que quieres eliminar este servicio?\");'>
                                 <i class='fas fa-trash'></i>
                             </button>
                         </form>
@@ -75,7 +68,7 @@
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='7' class='text-center'>No hay Productos registrados</td></tr>";
+            echo "<tr><td colspan='5' class='text-center'>No hay servicios registrados</td></tr>";
         }
     ?>
                         </tbody>
@@ -86,5 +79,3 @@
     </div>
 
     <?php PrintFooter(); ?>
-
-    <script src="../Scripts/login.js"></script>

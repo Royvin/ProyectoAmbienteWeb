@@ -8,8 +8,9 @@ if(isset($_POST["btnCrear"]))
     $cantidad = $_POST["cantidad"];
     $idCategoria = $_POST["idCategoria"];
     $idProveedor = $_POST["idProveedor"];
+    $imagen = file_get_contents($_FILES["imagen"]["tmp_name"]);
 
-    $resultado = CrearProducto($nombre,$precio,$cantidad,$idCategoria,$idProveedor);
+    $resultado = CrearProducto($nombre,$precio,$cantidad,$idCategoria,$idProveedor, $imagen);
 
     if($resultado == true)
     {
@@ -41,8 +42,9 @@ if(isset($_POST["btnEditar"])) {
     $cantidad = $_POST["cantidad"];
     $idCategoria = $_POST["idCategoria"];
     $idProveedor = $_POST["idProveedor"];
+    $imagen = file_get_contents($_FILES["imagen"]["tmp_name"]);
     
-    $resultado = EditarProducto($idProducto, $nombre, $precio, $cantidad, $idCategoria, $idProveedor);
+    $resultado = EditarProducto($idProducto, $nombre, $precio, $cantidad, $idCategoria, $idProveedor, $imagen);
     
     if($resultado == true) {
         header('location: AdministrarProductos.php');

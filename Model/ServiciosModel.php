@@ -1,30 +1,31 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/BaseDatosModel.php";
 
-function CrearProducto($nombre, $precio ,$cantidad, $idcategoria, $idproveedor, $imagen)
+function CrearServicio($nombre, $descripcion, $imagen)
 {
     try {
         $context = AbrirBaseDatos();
-        $stmt = $context->prepare("CALL SP_CrearProducto(?, ?, ?, ?, ?, ?)");
+        $stmt = $context->prepare("CALL SP_CrearServicio(?, ?, ?)");
 
-        $stmt->bind_param("sdiiib", $nombre, $precio ,$cantidad, $idcategoria, $idproveedor, $null);
-        $stmt->send_long_data(5, $imagen); 
+        $stmt->bind_param("ssb", $nombre, $descripcion, $null);
+        $stmt->send_long_data(2, $imagen); 
 
         $resultado = $stmt->execute();
         CerrarBaseDatos($context);
 
         return $resultado;
-
     } catch (mysqli_sql_exception $error) {
         return $error->getMessage(); 
     }
 }
 
-function ConsultarProductos()
+
+
+function ConsultarServicios()
 {
     try {
         $context = AbrirBaseDatos();
-        $sentencia = "CALL SP_ConsultarProductos()";
+        $sentencia = "CALL SP_ConsultarServicios()";
         $resultado = $context->query($sentencia);
 
         CerrarBaseDatos($context);
@@ -36,11 +37,11 @@ function ConsultarProductos()
     }
 }
 
-function EliminarProducto($idProducto)
+function EliminarServicio($idServicio)
 {
     try {
         $context = AbrirBaseDatos();
-        $sentencia = "CALL SP_EliminarProducto($idProducto)";
+        $sentencia = "CALL SP_EliminarServicio($idServicio)";
         $resultado = $context->query($sentencia);
 
         CerrarBaseDatos($context);
@@ -52,13 +53,14 @@ function EliminarProducto($idProducto)
     }
 }
 
-function EditarProducto($idProducto, $nombre, $precio, $cantidadDisponible, $idCategoria, $idProveedor, $imagen) {
+function EditarServicio($idServicio, $nombre, $descripcion, $imagen)
+{
     try {
         $context = AbrirBaseDatos();
-        $stmt = $context->prepare("CALL SP_EditarProductos(?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $context->prepare("CALL SP_EditarServicios(?, ?, ?, ?)");
 
-        $stmt->bind_param("isdiiib", $idProducto, $nombre, $precio, $cantidadDisponible, $idCategoria, $idProveedor, $null);
-        $stmt->send_long_data(6, $imagen);
+        $stmt->bind_param("issb", $idServicio, $nombre, $descripcion, $null);
+        $stmt->send_long_data(3, $imagen);
 
         $resultado = $stmt->execute();
         CerrarBaseDatos($context);
@@ -69,16 +71,17 @@ function EditarProducto($idProducto, $nombre, $precio, $cantidadDisponible, $idC
     }
 }
 
-function ConsultarProductoPorId($idProducto) {
+
+function ConsultarServicioPorId($idServicio) {
     try {
         $context = AbrirBaseDatos();
-        $sentencia = "CALL SP_ConsultarProductoPorId($idProducto)";
+        $sentencia = "CALL SP_ConsultarServicioPorId($idServicio)";
         $resultado = $context->query($sentencia);
         
         if ($resultado && $resultado->num_rows > 0) {
-            $producto = $resultado->fetch_assoc();
+            $servicio = $resultado->fetch_assoc();
             CerrarBaseDatos($context);
-            return $producto;
+            return $servicio;
         } else {
             CerrarBaseDatos($context);
             return null;

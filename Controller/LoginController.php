@@ -35,6 +35,7 @@
             // Asegúrate de tener session_start() antes de esto
             $_SESSION["NombreUsuario"] = $datos["NombreUsuario"];
             $_SESSION["IdUsuario"] = $datos["Id"];
+            $_SESSION["CorreoUsuario"] = $datos["CorreoUsuario"] ;
             
             // Redirige al home
             header('Location: ../../View/Login/home.php');
@@ -48,6 +49,24 @@
         session_destroy();
         header('Location: ../../View/Login/login.php');
         exit;
+    }
+
+    if(isset($_POST["crearCuentaBtn"]))
+    {
+        $nombre = $_POST["txtUsername"];
+        $correo = $_POST["txtCorreo"];
+        $contrasenna = $_POST["txtContrasenna"];
+
+        $resultado = RegistrarCuentaModel($nombre,$correo,$contrasenna);
+
+        if($resultado == true)
+        {
+            header('location: ../../View/Login/login.php');
+        }
+        else
+        {
+            $_POST["Message"] = "Su información no fue registrada correctamente";
+        }
     }
 
     if(isset($_POST["recuperarCuentaBtn"]))
