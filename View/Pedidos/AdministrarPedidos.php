@@ -29,11 +29,6 @@
                     <h1 class="mb-0">Administración de Pedidos</h1>
                     <p class="mb-0">Gestión de todos los pedidos en el sistema</p>
                 </div>
-                <div class="col-md-6 text-end">
-                    <a href="/ProyectoAmbienteWeb/View/Admin/Dashboard.php" class="btn btn-success">
-                        <i class="fas fa-arrow-left"></i> Volver al Dashboard
-                    </a>
-                </div>
             </div>
         </div>
         
