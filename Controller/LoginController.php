@@ -32,12 +32,11 @@
         if ($resultado != null && $resultado->num_rows > 0) {
             $datos = mysqli_fetch_array($resultado);
         
-            // Asegúrate de tener session_start() antes de esto
             $_SESSION["NombreUsuario"] = $datos["NombreUsuario"];
             $_SESSION["IdUsuario"] = $datos["Id"];
-            $_SESSION["CorreoUsuario"] = $datos["CorreoUsuario"] ;
+            $_SESSION["CorreoUsuario"] = $datos["CorreoUsuario"];
+            $_SESSION["IdPerfil"] = $datos["IdPerfil"];
             
-            // Redirige al home
             header('Location: ../../View/Login/home.php');
             exit; 
         } else {
@@ -51,24 +50,6 @@
         exit;
     }
 
-    if(isset($_POST["crearCuentaBtn"]))
-    {
-        $nombre = $_POST["txtUsername"];
-        $correo = $_POST["txtCorreo"];
-        $contrasenna = $_POST["txtContrasenna"];
-
-        $resultado = RegistrarCuentaModel($nombre,$correo,$contrasenna);
-
-        if($resultado == true)
-        {
-            header('location: ../../View/Login/login.php');
-        }
-        else
-        {
-            $_POST["Message"] = "Su información no fue registrada correctamente";
-        }
-    }
-
     if(isset($_POST["recuperarCuentaBtn"]))
     {
         $correo = $_POST["txtCorreo"];
@@ -80,7 +61,6 @@
             $datos = mysqli_fetch_array($resultado);
             $codigo = GenerarCodigo();
 
-            //Actualizar Contraseña por el código
             $resultadoActualizacion = ActualizarContrasennaModel($datos["Id"], $codigo);
 
             //Enviamos el correo
