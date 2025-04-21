@@ -5,79 +5,64 @@ if (session_status() === PHP_SESSION_NONE) {
 
 function BarraNavegacion()
 {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     if (!isset($_SESSION["IdUsuario"])) {
         header('Location: login.php');
         exit;
     }
+
+    $nombre = htmlspecialchars($_SESSION["NombreUsuario"] ?? 'Invitado', ENT_QUOTES);
+    $perfil = (int) ($_SESSION["IdPerfil"] ?? 0);
+
+    echo ' <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="../Login/home.php">
+    <img src="../imgs/logo.png" width="50" height="50" class="me-2" alt="Logo">
+    Repuestos Grillo
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="../Login/home.php">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Productos/Catalogo.php">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Servicios/MostrarServicios.php">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Pedidos/ListaPedidos.php">Pedidos</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Reseñas/CrearResena.php">Reseñas</a></li>';
+
+        if ($perfil === 1) {
+            echo '
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Administración
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">Productos</a></li>
+                <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Proveedores</a></li>
+                <li><a class="dropdown-item" href="../Servicios/AdministrarServicios.php">Servicios</a></li>
+                <li><a class="dropdown-item" href="../Pedidos/AdministrarPedidos.php">Pedidos</a></li>
+                <li><a class="dropdown-item" href="../Reseñas/AdministrarResena.php">Reseñas</a></li>
+              </ul>
+            </li>';
+        }
     
-    $nombreParaMostrar = isset($_SESSION["NombreUsuario"]) ? $_SESSION["NombreUsuario"] : "Invitado";
 
-    echo '
-    <nav class="navbar navbar-expand-lg navbar-dark nav-gradient">
-        <div class="container-fluid">
-            <!-- LOGO -->
-            <a class="navbar-brand" href="../Login/home.php">
-                <img src="../imgs/logo.png" alt="Logo" width="50" height="50" class="me-2">
-                Repuestos Grillo
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Enlaces de la navbar -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../Login/home.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Productos/Catalogo.php">Catálogo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Servicios/MostrarServicios.php">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Pedidos/ListaPedidos.php">Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Reseñas/CrearResena.php">Reseñas</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown" href="#">
-                            Administración
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Productos/AdministrarProductos.php">Administrar Productos</a></li>
-                            <li><a class="dropdown-item" href="../Proveedores/AdministrarProveedores.php">Administrar Proveedores</a></li>
-                            <li><a class="dropdown-item" href="../Servicios/AdministrarServicios.php">Administrar Servicios</a></li>
-                            <li><a class="dropdown-item" href="../Pedidos/AdministrarPedidos.php">Administrar Pedidos</a></li>
-                            <li><a class="dropdown-item" href="../Reseñas/AdministrarResena.php">Administrar Reseñas</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- Aquí se muestra el nombre del usuario y el botón "Cerrar Sesión" -->
-                <div class="d-flex align-items-center">
-                    <!-- Texto de bienvenida; se puede ajustar la clase para estilo -->
-                    <span class="navbar-text text-white fs-5 me-3">
-                        Estimado(a), ' . htmlspecialchars($nombreParaMostrar, ENT_QUOTES) .'
-                    </span>
-
-
-                    <form action="" method="POST" class="m-0 p-0">
-                        <button type="submit" name="btnSalir" class="btn btn-outline-light">
-                            Cerrar Sesión
-                        </button>
-                    </form>
-                    
-                </div>
-            </div>
+        echo '
+        </ul>
+        <div class="d-flex align-items-center">
+          <span class="navbar-text text-white fs-5 me-3">Estimado(a), ' . $nombre . '</span>
+          <form method="POST" class="m-0">
+            <button type="submit" name="btnSalir" class="btn btn-outline-light">Cerrar Sesión</button>
+          </form>
         </div>
-    </nav>';
-}
+      </div>
+    </div>
+  </nav>';
+  }
+
 
 function PrintCss()
 {
