@@ -310,4 +310,40 @@ body {
     border-radius: 10px;
     width: 80%;
 }
+
+/* Estilos para el modal */
+#logoutModal {
+    z-index: 1060; 
+}
+
+.modal-backdrop {
+    z-index: 1050; 
+}
+
+/* Asegurar que el modal sea visible */
+.modal {
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: block;
+}
+
+/* Corrección para el contenido del modal */
+.modal-content {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para el botón de cierre */
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.gradient-custom-2 {
+    background: var(--primary-color) !important;
+    color: var(--text-light) !important;
+}
   
