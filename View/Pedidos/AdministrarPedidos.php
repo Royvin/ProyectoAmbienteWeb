@@ -115,7 +115,16 @@
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<?php echo $pedido['IdPedido']; ?>">
                                                         <li>
-                                                            <form method="post" action="/ProyectoAmbienteWeb/Controller/PedidosController.php" class="dropdown-item">
+                                                            <form method="post" action="" class="dropdown-item">
+                                                                <input type="hidden" name="idPedido" value="<?php echo $pedido['IdPedido']; ?>">
+                                                                <input type="hidden" name="nuevoEstado" value="Pendiente">
+                                                                <button type="submit" name="actualizarEstado" class="btn btn-link p-0 text-decoration-none">
+                                                                    <i class="fas fa-clock text-warning"></i> Marcar como Pendiente
+                                                                </button>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <form method="post" action="" class="dropdown-item">
                                                                 <input type="hidden" name="idPedido" value="<?php echo $pedido['IdPedido']; ?>">
                                                                 <input type="hidden" name="nuevoEstado" value="Completado">
                                                                 <button type="submit" name="actualizarEstado" class="btn btn-link p-0 text-decoration-none">

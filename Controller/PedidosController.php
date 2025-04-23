@@ -108,7 +108,7 @@ if (isset($_POST['actualizarEstado'])) {
     if (!$pedido) {
         $_SESSION['mensaje'] = "El pedido no existe.";
         $_SESSION['tipo_mensaje'] = "danger";
-        header("Location: /ProyectoAmbienteWeb/View/Pedidos/ListaPedidos.php");
+        header("Location: /ProyectoAmbienteWeb/View/Pedidos/AdministrarPedidos.php");
         exit;
     }
     
@@ -116,7 +116,7 @@ if (isset($_POST['actualizarEstado'])) {
     if ($pedido['EstadoPedido'] == 'Completado') {
         $_SESSION['mensaje'] = "No se puede modificar un pedido que ya ha sido completado.";
         $_SESSION['tipo_mensaje'] = "warning";
-        header("Location: /ProyectoAmbienteWeb/View/Pedidos/ListaPedidos.php");
+        header("Location: /ProyectoAmbienteWeb/View/Pedidos/AdministrarPedidos.php");
         exit;
     }
     
@@ -130,7 +130,7 @@ if (isset($_POST['actualizarEstado'])) {
         $_SESSION['tipo_mensaje'] = "danger";
     }
     
-    header("Location: /ProyectoAmbienteWeb/View/Pedidos/ListaPedidos.php");
+    header("Location: /ProyectoAmbienteWeb/View/Pedidos/AdministrarPedidos.php");
     exit;
 }
 

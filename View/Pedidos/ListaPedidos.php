@@ -83,34 +83,6 @@
                                                 <a href="/ProyectoAmbienteWeb/View/Pedidos/ConfirmacionPedido.php?id=<?php echo $pedido['IdPedido']; ?>" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i> Ver Detalles
                                                 </a>
-                                                
-                                                <?php if ($pedido['EstadoPedido'] != 'Completado'): ?>
-                                                <div class="dropdown d-inline-block">
-                                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton<?php echo $pedido['IdPedido']; ?>" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        Cambiar Estado
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<?php echo $pedido['IdPedido']; ?>">
-                                                        <li>
-                                                            <form method="post" action="" class="dropdown-item">
-                                                                <input type="hidden" name="idPedido" value="<?php echo $pedido['IdPedido']; ?>">
-                                                                <input type="hidden" name="nuevoEstado" value="Pendiente">
-                                                                <button type="submit" name="actualizarEstado" class="btn btn-link p-0 text-decoration-none">
-                                                                    <i class="fas fa-clock text-warning"></i> Marcar como Pendiente
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                        <li>
-                                                            <form method="post" action="" class="dropdown-item">
-                                                                <input type="hidden" name="idPedido" value="<?php echo $pedido['IdPedido']; ?>">
-                                                                <input type="hidden" name="nuevoEstado" value="Completado">
-                                                                <button type="submit" name="actualizarEstado" class="btn btn-link p-0 text-decoration-none">
-                                                                    <i class="fas fa-check text-success"></i> Marcar como Completado
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <?php endif; ?>
                                             </div>
                                         </td>
                                     </tr>
