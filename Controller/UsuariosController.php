@@ -17,25 +17,13 @@
             return;
         }
 
-        //Actualizar Contraseña por el código
         $resultadoActualizacion = ActualizarContrasennaModel($_SESSION["IdUsuario"], $contrasennaNueva, $contrasennaActual);
 
         $datos = mysqli_fetch_array($resultadoActualizacion);
 
         if($datos["Resultado"] == true)
         {
-            //Enviamos el correo
-            $contenido = "<html><body>
-            Estimado(a) " . $datos["NombreUsuario"] . "<br/><br/>
-            Se ha realizado el cambio de su contraseña correctamente<br/>
-            Si usted no realizó esta acción se puede comunicar con el centro de atención de usuarios. </b><br/>";
-
-            $resultadoCorreo = EnviarCorreo("Actualización de Contraseña", $contenido, $_SESSION["CorreoUsuario"]);
-        
-            if($resultadoCorreo == true)
-            {
-                header('location: ../../View/Login/home.php');
-            }
+            header('location: ../../View/Login/home.php');
         }
 
         $_POST["Message"] = "No se pudo actualizar su contraseña de acceso al sistema correctamente";
