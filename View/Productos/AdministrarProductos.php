@@ -86,5 +86,5 @@
     </div>
 
     <?php PrintFooter(); ?>
+    <?php PrintScript(); ?>
 
-    <script src="../Scripts/login.js"></script>

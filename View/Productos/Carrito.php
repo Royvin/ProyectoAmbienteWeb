@@ -139,5 +139,6 @@
     </div>
 
     <?php PrintFooter(); ?>
+    <?php PrintScript(); ?>
 </body>
 </html>

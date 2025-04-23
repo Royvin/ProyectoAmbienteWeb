@@ -75,6 +75,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Controller/LoginC
     </div>
 
     <?php PrintFooter(); ?>
+    <?php PrintScript(); ?>
 
 </body>
 </html>

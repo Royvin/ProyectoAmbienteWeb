@@ -1,6 +1,5 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ProyectoAmbienteWeb/Model/UsuariosModel.php";
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/Proyecto/Controller/UtilitariosController.php";
 
     if(session_status() == PHP_SESSION_NONE){
         session_start();

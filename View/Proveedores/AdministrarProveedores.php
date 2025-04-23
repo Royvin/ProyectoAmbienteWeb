@@ -78,3 +78,4 @@
     </div>
 
     <?php PrintFooter(); ?>
+    <?php PrintScript(); ?>

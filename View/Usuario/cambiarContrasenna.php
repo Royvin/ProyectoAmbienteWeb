@@ -10,18 +10,15 @@
 
   <?php BarraNavegacion(); ?>
 
-  <!-- Fondo claro y padding para separar del navbar -->
   <div class="container-fluid bg-light py-5 vh-50">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-sm-10 col-md-8 col-lg-5">
         <div class="card shadow-lg border-0 rounded-lg">
           
-          <!-- Header del card -->
           <div class="card-header bg-gradient-custom-2 text-white text-center">
             <h3 class="m-0">🔒 Actualizar Contraseña</h3>
           </div>
           
-          <!-- Cuerpo del card -->
           <div class="card-body p-4">
             <?php if(!empty($_POST["Message"])): ?>
               <div class="alert alert-warning mb-3">
@@ -70,7 +67,6 @@
             </form>
           </div>
           
-          <!-- Footer del card -->
           <div class="card-footer text-center py-2">
             <small class="text-muted">Tu seguridad es nuestra prioridad</small>
           </div>
